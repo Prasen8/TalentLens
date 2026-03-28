@@ -1,0 +1,167 @@
+/* TalentLens AI - Main App Styles */
+
+.App {
+    min-height: 100vh;
+}
+
+/* Navigation */
+.nav-link {
+    @apply text-gray-600 hover:text-[#1A4D2E] transition-colors font-medium;
+}
+
+.nav-link.active {
+    @apply text-[#1A4D2E];
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, #F0FDF4 0%, #FFFFFF 50%, #F8F9FA 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 60%;
+    height: 150%;
+    background: radial-gradient(ellipse, rgba(217, 249, 157, 0.3) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+/* Cards */
+.feature-card {
+    @apply bg-white border border-gray-100 rounded-2xl p-6 
+           shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] 
+           hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.08)] 
+           transition-all duration-300;
+}
+
+.feature-card:hover {
+    @apply border-[#D9F99D] -translate-y-1;
+}
+
+.stat-card {
+    @apply bg-white rounded-2xl p-6 border border-gray-100
+           shadow-sm hover:shadow-md transition-shadow;
+}
+
+/* Buttons */
+.btn-primary {
+    @apply bg-[#1A4D2E] text-white hover:bg-[#14532D] 
+           rounded-full px-8 py-3 font-medium 
+           transition-all shadow-lg hover:shadow-xl 
+           hover:-translate-y-0.5 active:scale-95;
+}
+
+.btn-secondary {
+    @apply bg-white text-[#1A4D2E] border border-[#1A4D2E]/20 
+           hover:bg-[#F0FDF4] rounded-full px-8 py-3 
+           font-medium transition-all active:scale-95;
+}
+
+.btn-ghost {
+    @apply text-gray-600 hover:text-[#1A4D2E] hover:bg-[#F0FDF4] 
+           rounded-lg px-4 py-2 transition-colors;
+}
+
+/* Badges */
+.badge-success {
+    @apply bg-[#D9F99D] text-[#1A4D2E] px-3 py-1 rounded-full 
+           text-xs font-bold uppercase tracking-wider;
+}
+
+.badge-warning {
+    @apply bg-amber-100 text-amber-800 px-3 py-1 rounded-full 
+           text-xs font-bold uppercase tracking-wider;
+}
+
+.badge-neutral {
+    @apply bg-gray-100 text-gray-600 px-3 py-1 rounded-full 
+           text-xs font-bold uppercase tracking-wider;
+}
+
+/* Input Fields */
+.input-field {
+    @apply bg-white border border-gray-200 rounded-lg px-4 py-3 
+           focus:ring-2 focus:ring-[#1A4D2E]/20 focus:border-[#1A4D2E] 
+           transition-all outline-none placeholder:text-gray-400 w-full;
+}
+
+.textarea-field {
+    @apply bg-white border border-gray-200 rounded-lg px-4 py-3 
+           focus:ring-2 focus:ring-[#1A4D2E]/20 focus:border-[#1A4D2E] 
+           transition-all outline-none placeholder:text-gray-400 
+           w-full resize-none min-h-[150px];
+}
+
+/* Upload Zone */
+.upload-dropzone {
+    @apply border-2 border-dashed border-gray-300 rounded-2xl p-8
+           text-center cursor-pointer transition-all duration-300
+           hover:border-[#1A4D2E] hover:bg-[#F0FDF4]/50;
+}
+
+.upload-dropzone.active {
+    @apply border-[#1A4D2E] bg-[#F0FDF4] scale-[1.02];
+}
+
+/* Score Display */
+.score-ring {
+    @apply relative inline-flex items-center justify-center;
+}
+
+.score-ring-bg {
+    @apply absolute inset-0 rounded-full border-8 border-gray-100;
+}
+
+.score-ring-value {
+    @apply absolute inset-0 rounded-full border-8 border-transparent 
+           transition-all duration-1000 ease-out;
+}
+
+/* Tables */
+.data-table {
+    @apply w-full border-collapse;
+}
+
+.data-table th {
+    @apply bg-gray-50 text-left px-4 py-3 font-semibold text-gray-700 
+           border-b border-gray-200 sticky top-0;
+}
+
+.data-table td {
+    @apply px-4 py-4 border-b border-gray-100;
+}
+
+.data-table tr {
+    @apply hover:bg-[#F0FDF4]/50 transition-colors cursor-pointer;
+}
+
+/* Progress Bar */
+.progress-bar {
+    @apply h-2 bg-gray-100 rounded-full overflow-hidden;
+}
+
+.progress-fill {
+    @apply h-full bg-[#1A4D2E] rounded-full transition-all duration-500;
+}
+
+/* Animations */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-section::before {
+        display: none;
+    }
+    
+    .btn-primary, .btn-secondary {
+        @apply px-6 py-2.5 text-sm;
+    }
+}

@@ -1,0 +1,147 @@
+{
+  "identity": {
+    "name": "TalentLens",
+    "archetype": "Swiss Organic",
+    "vibe": "Precision meets Human Potential. Stark clarity for data, organic warmth for people.",
+    "principles": [
+      "Fusion: Swiss Grid (Order) + Organic Textures (Humanity)",
+      "Emotion: Confidence in decision making",
+      "Content: Data is the hero, but candidates are people",
+      "Contrast: High contrast for readability, subtle textures for depth"
+    ]
+  },
+  "typography": {
+    "headings": {
+      "family": "Outfit, sans-serif",
+      "weights": ["500", "700"],
+      "usage": "Use for all section headers, modal titles, and hero text. Tight tracking (-0.02em).",
+      "cdn_import": "@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&family=Manrope:wght@400;500;600;700&display=swap');"
+    },
+    "body": {
+      "family": "Manrope, sans-serif",
+      "weights": ["400", "500", "600"],
+      "usage": "Use for all paragraphs, data tables, inputs, and labels. Excellent legibility for small text."
+    }
+  },
+  "colors": {
+    "palette": {
+      "primary": {
+        "DEFAULT": "#1A4D2E",
+        "foreground": "#FFFFFF",
+        "description": "Deep Forest Green - The anchor. Represents growth and stability."
+      },
+      "secondary": {
+        "DEFAULT": "#F0FDF4",
+        "foreground": "#14532D",
+        "description": "Pale Mint - Soft background for cards and active states."
+      },
+      "accent": {
+        "DEFAULT": "#D9F99D",
+        "foreground": "#1A4D2E",
+        "description": "Electric Lime - For high-priority actions, scores, and success states."
+      },
+      "background": {
+        "DEFAULT": "#FFFFFF",
+        "alt": "#F8F9FA",
+        "dark": "#0A0A0A"
+      },
+      "text": {
+        "primary": "#1A1A1A",
+        "secondary": "#525252",
+        "muted": "#A3A3A3"
+      },
+      "border": {
+        "DEFAULT": "#E5E7EB",
+        "focus": "#1A4D2E"
+      }
+    },
+    "gradients": {
+      "hero": "linear-gradient(135deg, #F0FDF4 0%, #FFFFFF 100%)",
+      "glass": "rgba(255, 255, 255, 0.7)"
+    }
+  },
+  "spacing": {
+    "scale": {
+      "xs": "0.25rem",
+      "sm": "0.5rem",
+      "md": "1rem",
+      "lg": "1.5rem",
+      "xl": "2rem",
+      "2xl": "3rem",
+      "3xl": "4rem",
+      "section": "6rem"
+    },
+    "container": {
+      "padding": "2rem",
+      "max_width": "1400px"
+    }
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-[#1A4D2E] text-white hover:bg-[#14532D] rounded-full px-8 py-3 font-medium transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5",
+      "secondary": "bg-white text-[#1A4D2E] border border-[#1A4D2E]/20 hover:bg-[#F0FDF4] rounded-full px-8 py-3 font-medium transition-all",
+      "ghost": "text-[#525252] hover:text-[#1A4D2E] hover:bg-[#F0FDF4] rounded-lg px-4 py-2 transition-colors"
+    },
+    "cards": {
+      "base": "bg-white border border-gray-100 rounded-2xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_-4px_rgba(0,0,0,0.08)] transition-shadow duration-300",
+      "glass": "bg-white/70 backdrop-blur-xl border border-white/50 shadow-sm rounded-2xl",
+      "interactive": "cursor-pointer hover:border-[#D9F99D] transition-colors duration-200"
+    },
+    "inputs": {
+      "base": "bg-white border border-gray-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-[#1A4D2E]/20 focus:border-[#1A4D2E] transition-all outline-none placeholder:text-gray-400"
+    },
+    "badges": {
+      "success": "bg-[#D9F99D] text-[#1A4D2E] px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider",
+      "warning": "bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider",
+      "neutral": "bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider"
+    }
+  },
+  "layout_strategies": {
+    "landing_page": {
+      "grid": "Tetris Grid (Mode A)",
+      "description": "Asymmetric bento grid. Large typography. Use 'The Tracing Beam' effect on feature cards.",
+      "sections": [
+        "Hero: Split screen or centered with large abstract 3D element",
+        "Features: Bento grid with glassmorphism",
+        "How it Works: Step-by-step vertical timeline",
+        "CTA: Large, bold, high-contrast section"
+      ]
+    },
+    "dashboard": {
+      "grid": "High Density Grid (Mode B)",
+      "description": "Sidebar navigation. Top bar for global search/actions. Main content area with sticky headers for tables.",
+      "widgets": [
+        "Stats Row: 4-col grid of key metrics",
+        "Main Table: Full width, sortable, filterable",
+        "Detail View: Split pane (Resume Preview | Analysis Panel)"
+      ]
+    }
+  },
+  "assets": {
+    "images": {
+      "hero_bg": "https://images.unsplash.com/photo-1758518729685-f88df7890776?crop=entropy&cs=srgb&fm=jpg&q=85",
+      "workspace": "https://images.pexels.com/photos/4065876/pexels-photo-4065876.jpeg",
+      "abstract_bg": "https://images.pexels.com/photos/30547573/pexels-photo-30547573.jpeg",
+      "team_meeting": "https://images.unsplash.com/photo-1758873268663-5a362616b5a7?crop=entropy&cs=srgb&fm=jpg&q=85"
+    },
+    "icons": {
+      "library": "lucide-react",
+      "style": "Stroke width 1.5px for elegance. 2px for active states."
+    }
+  },
+  "motion": {
+    "transitions": "transition-all duration-300 ease-out",
+    "hover": "hover:-translate-y-1 hover:shadow-lg",
+    "entrance": "animate-in fade-in slide-in-from-bottom-4 duration-500"
+  },
+  "universal_guidelines": [
+    "Do NOT use generic gradients. Use solid colors or subtle noise textures.",
+    "Ensure all text has sufficient contrast (APCA standards).",
+    "Use 'Manrope' for all numbers and data to ensure tabular alignment.",
+    "Buttons must have a 'pressed' state scale effect (active:scale-95).",
+    "Dashboard tables must have sticky headers and hoverable rows.",
+    "Use 'Sonner' for all toast notifications.",
+    "All interactive elements must have data-testid attributes."
+  ],
+  "instructions_to_main_agent": "You are building a high-precision tool. Focus on the 'Analysis' aspect. The UI should feel like a medical instrument or a high-end financial tool—clean, precise, and trustworthy. Use the 'Deep Forest Green' to ground the design and 'Electric Lime' to guide the eye to scores and actions. Avoid clutter. Use whitespace aggressively."
+}

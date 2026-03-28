@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: talentlens-api
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt && python -m spacy download en_core_web_sm
+    startCommand: uvicorn server:app --host 0.0.0.0 --port $PORT
+    plan: free
+    envVars:
+      - key: MONGO_URL
+        sync: false
+      - key: DB_NAME
+        value: Resume_Main
+      - key: CORS_ORIGINS
+        sync: false
+      - key: MAIL_USERNAME
+        sync: false
+      - key: MAIL_PASSWORD
+        sync: false
+      - key: MAIL_FROM
+        sync: false
+      - key: MAIL_FROM_NAME
+        value: TalentLens Solutions
+      - key: MAIL_SERVER
+        value: smtp.gmail.com
+      - key: MAIL_PORT
+        value: "587"
