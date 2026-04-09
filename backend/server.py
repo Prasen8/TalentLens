@@ -64,10 +64,8 @@ app = FastAPI(title="TalentLens AI API", version="1.0.0")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "https://talent-lens-psi.vercel.app"
-    ],
-    allow_credentials=True,
+    allow_origins=["*"],   # ✅ allow all (fix issues fast)
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -3551,7 +3549,7 @@ async def startup_check():
             "Set MAIL_USERNAME, MAIL_PASSWORD in your .env file."
         )
 
-
+app.include_router(api_router)
 @app.on_event("shutdown")
 async def shutdown_db_client():
     client.close()
