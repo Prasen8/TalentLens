@@ -3,8 +3,12 @@ services:
     name: talentlens-backend
     env: python
     rootDir: backend
-    buildCommand: pip install -r requirements.txt
+
+    buildCommand: pip install -r requirements.txt && python -m spacy download en_core_web_sm
     startCommand: uvicorn server:app --host 0.0.0.0 --port $PORT
+
+    pythonVersion: 3.11.9   # ✅ THIS IS THE REAL FIX
+
     envVars:
       - key: MONGO_URL
         value: mongodb+srv://talentlenssolutions_db_user:TalentLens008@talentlens.xohr8ul.mongodb.net/talentlens?retryWrites=true&w=majority&appName=TalentLens
@@ -24,5 +28,3 @@ services:
         value: smtp.gmail.com
       - key: MAIL_PORT
         value: "587"
-      - key: PYTHON_VERSION
-        value: "3.11.0"
