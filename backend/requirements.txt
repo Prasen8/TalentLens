@@ -1,16 +1,37 @@
 fastapi==0.110.1
 uvicorn[standard]==0.29.0
-pymongo==4.6.1
+
+# Database
 motor==3.4.0
+pymongo==4.6.1
+
+# Validation
+pydantic==2.12.5
+email-validator==2.1.1
+
+# File handling
+aiofiles==23.2.1
+python-multipart==0.0.9
+
+# Security
+bcrypt==4.1.2
 python-jose==3.3.0
 passlib[bcrypt]==1.7.4
-python-multipart==0.0.9
+
+# NLP
+spacy==3.7.4
+
+# PDF / DOC processing
 PyPDF2==3.0.1
 python-docx==1.1.2
-spacy==3.7.4
+reportlab==4.0.9
+
+# HTTP / utils
 requests==2.31.0
 httpx==0.27.0
+
+# Env config
 python-dotenv==1.0.1
 
-# ✅ spaCy model (IMPORTANT)
+# spaCy model (IMPORTANT)
 https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1-py3-none-any.whl
