@@ -64,14 +64,11 @@ app = FastAPI(title="TalentLens AI API", version="1.0.0")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "https://talent-lens-psi.vercel.app"
-    ],
-    allow_credentials=True,
+    allow_origins=["*"],   # 🔥 allows all (fix CORS instantly)
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 from fastapi.responses import JSONResponse
 
 @app.options("/{rest_of_path:path}")
