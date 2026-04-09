@@ -62,19 +62,13 @@ except OSError:
 # Create the main app
 app = FastAPI(title="TalentLens AI API", version="1.0.0")
 
-# ✅ FIXED CORS (handles preflight + all routes)
-origins = [
-    "https://talent-lens-psi.vercel.app",
-    "http://localhost:3000",
-]
-
+# ✅ FULLY WORKING CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"],   # 🔥 use this NOW (fix all issues)
     allow_credentials=True,
-    allow_methods=["*"],   # allow GET, POST, PUT, DELETE, OPTIONS
-    allow_headers=["*"], 
-    allow_origins=["*"],# allow Authorization, Content-Type, etc.
+    allow_methods=["*"],   # VERY IMPORTANT for OPTIONS
+    allow_headers=["*"],
 )
 
 # 👇 AFTER THIS include all routers
