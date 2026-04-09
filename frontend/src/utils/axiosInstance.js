@@ -1,76 +1,81 @@
-import axios from 'axios';
+import axios from "axios";
 
-const API_BASE_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
+// ✅ Use environment variable (production) or fallback to localhost (development)
+const API_BASE_URL =
+  process.env.REACT_APP_BACKEND_URL || "http://localhost:8000";
 
+// ✅ Create Axios instance
 const axiosInstance = axios.create({
   baseURL: API_BASE_URL,
   headers: {
-    'Content-Type': 'application/json',
-    // Prevent HTTP caching
-    'Cache-Control': 'no-cache, no-store, must-revalidate',
-    'Pragma': 'no-cache',
-    'Expires': '0',
+    "Content-Type": "application/json",
+    // Prevent caching issues
+    "Cache-Control": "no-cache, no-store, must-revalidate",
+    Pragma: "no-cache",
+    Expires: "0",
   },
+  timeout: 60000, // 60s timeout (Render free tier can be slow)
 });
 
-// Add request interceptor to include auth token and cache-busting
+// ✅ Request Interceptor (Attach Token + Cache Busting)
 axiosInstance.interceptors.request.use(
   (config) => {
-    // Get token from localStorage - always get fresh token
-    const userAuth = localStorage.getItem('userAuth');
-    if (userAuth) {
-      try {
+    try {
+      const userAuth = localStorage.getItem("userAuth");
+
+      if (userAuth) {
         const userData = JSON.parse(userAuth);
-        const token = userData.token;
-        
-        // Add authorization header with fresh token
-        if (token) {
-          config.headers.Authorization = `Bearer ${token}`;
+
+        if (userData?.token) {
+          config.headers.Authorization = `Bearer ${userData.token}`;
         }
-      } catch (e) {
-        console.error('Error parsing userAuth:', e);
       }
+    } catch (error) {
+      console.error("Error reading auth data:", error);
     }
-    
-    // Add cache-busting timestamp for GET requests
-    if (config.method === 'get') {
+
+    // ✅ Cache busting for GET requests
+    if (config.method === "get") {
       config.params = config.params || {};
-      config.params._t = Date.now(); // Add timestamp to bust cache
+      config.params._t = Date.now();
     }
-    
+
     return config;
   },
-  (error) => {
-    return Promise.reject(error);
-  }
+  (error) => Promise.reject(error)
 );
 
-// Add response interceptor to handle auth errors
+// ✅ Response Interceptor (Handle Errors Globally)
 axiosInstance.interceptors.response.use(
-  (response) => {
-    return response;
-  },
+  (response) => response,
   (error) => {
-    // If unauthorized, clear auth and redirect to login
-    if (error.response && error.response.status === 401) {
+    // 🔴 Unauthorized → Logout user
+    if (error.response?.status === 401) {
       clearAuthData();
-      window.location.href = '/auth';
+      window.location.href = "/auth";
     }
-    
+
+    // 🟡 Backend sleeping (Render free tier)
+    if (error.code === "ECONNABORTED") {
+      console.warn("Request timeout - backend may be waking up");
+    }
+
     return Promise.reject(error);
   }
 );
 
-// Function to clear all auth-related data
+// ✅ Clear auth data function
 export const clearAuthData = () => {
-  localStorage.removeItem('userAuth');
-  localStorage.removeItem('isAuthenticated');
-  localStorage.removeItem('sessionId');
-  
-  // Dispatch logout event for any listeners
-  window.dispatchEvent(new CustomEvent('userLoggedOut', {
-    detail: { timestamp: Date.now() }
-  }));
+  localStorage.removeItem("userAuth");
+  localStorage.removeItem("isAuthenticated");
+  localStorage.removeItem("sessionId");
+
+  // Notify app about logout
+  window.dispatchEvent(
+    new CustomEvent("userLoggedOut", {
+      detail: { timestamp: Date.now() },
+    })
+  );
 };
 
 export default axiosInstance;
