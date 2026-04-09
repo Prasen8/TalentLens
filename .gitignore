@@ -30,13 +30,10 @@ next-env.d.ts
 dist/
 dist
 
-# Environment files — NEVER commit real credentials
+# Environment files (comprehensive coverage)
 .env
-.env.local
-.env.development.local
-.env.test.local
-backend/.env
-
+.env.*
+!.env.example
 *token.json*
 *credentials.json*
 

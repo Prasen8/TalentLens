@@ -50,6 +50,7 @@ mongo_url = os.environ['MONGO_URL']
 client = AsyncIOMotorClient(mongo_url)
 db = client[os.environ['DB_NAME']]
 
+
 # Load spaCy model
 try:
     nlp = spacy.load("en_core_web_sm")
@@ -3512,23 +3513,12 @@ async def get_advanced_dashboard(
 # Include the router in the main app
 app.include_router(api_router)
 
-
-# ── Read allowed origins from env (comma-separated) ──────────────────────────
-_cors_default = "http://localhost:3000,http://localhost:3002,http://127.0.0.1:3000,http://127.0.0.1:3002"
-_cors_origins = [
-    o.strip()
-    for o in os.environ.get("CORS_ORIGINS", _cors_default).split(",")
-    if o.strip()
-]
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=_cors_origins,
-    allow_credentials=True,
+    allow_origins=["http://localhost:3000", "http://localhost:3002", "http://127.0.0.1:3000", "http://127.0.0.1:3002"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 
 
 @app.on_event("startup")
