@@ -60,20 +60,26 @@ except OSError:
     nlp = spacy.load("en_core_web_sm")
 
 # Create the main app
+app = FastAPI(title="TalentLens AI API", version="1.0.0")
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",
-        "http://localhost:3002", 
-        "http://127.0.0.1:3000",
-        "http://127.0.0.1:3002",
-        "https://talent-lens-psi.vercel.app",  # Add this
-        "https://*.vercel.app",                 # Or this for all Vercel previews
-    ],
-    allow_credentials=True,
+    allow_origins=["*"],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+@app.options("/{rest_of_path:path}")
+async def preflight_handler(rest_of_path: str):
+    return JSONResponse(
+        content={"message": "OK"},
+        headers={
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "*",
+            "Access-Control-Allow-Headers": "*",
+        },
+    )
 
 
 api_router = APIRouter(prefix="/api")
