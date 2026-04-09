@@ -64,16 +64,13 @@ app = FastAPI(title="TalentLens AI API", version="1.0.0")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],   # 🔥 allows all (fix CORS instantly)
-    allow_credentials=False,
+    allow_origins=[
+        "https://talent-lens-psi.vercel.app"
+    ],
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-from fastapi.responses import JSONResponse
-
-@app.options("/{rest_of_path:path}")
-async def preflight_handler(rest_of_path: str):
-    return JSONResponse(content={"message": "OK"})
 
 
 api_router = APIRouter(prefix="/api")
