@@ -8,7 +8,8 @@ import {
   Search, Shield, Clock, Layers, Download, ExternalLink,
   Cpu, Database, Cloud, Globe, Terminal, Wrench,
   Brain, Sparkles, Wand2, ScanLine, BarChart3, Mail,
-  FlaskConical, Radar, ListChecks, UserCheck, ChevronUp
+  FlaskConical, Radar, ListChecks, UserCheck, ChevronUp,
+  Github, Linkedin, Twitter, ExternalLink as Link2
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -286,6 +287,71 @@ const SECTIONS = [
   },
 ];
 
+/* ─── Team Members Data ─── */
+const TEAM_MEMBERS = [
+   {
+id: 1,
+  name: "Prasen Pramod Nimje",
+  role: "Backend Lead & NLP Engineer",
+  department: "Engineering",
+  bio: "Backend Lead of TalentLens, responsible for designing scalable APIs and NLP pipelines for resume parsing and job-role matching. Built the core logic for manual and advanced resume analysis, integrating ML models and data processing workflows to deliver accurate role recommendations. Passionate about building end-to-end AI applications that solve real-world problems.",
+  skills: ["Python", "FastAPI", "NLP", "Machine Learning", "SQL", "MongoDB", "Pandas"],
+  avatar: "PN",
+  avatarBg: "#1A4D2E",
+  avatarText: "#D9F99D",
+  accentColor: "#1D4ED8",
+  accentBg: "#F0FDF4",
+  badgeColor: "bg-emerald-100 text-emerald-700",
+  github: "https://github.com/Prasen8",
+  linkedin: "https://www.linkedin.com/in/prasen-nimje",
+  linkedinColor: "#0A66C2",
+  achievement: "Developed end-to-end resume analysis pipeline with role recommendation system",
+    },
+  {
+    id: 2,
+  name: "Mahesh Shridhar Khumkar",
+  role: "AI/ML Engineer & NLP Specialist",
+  department: "AI Research",
+  bio: "Focused on building and optimizing machine learning models for TalentLens. Worked on role prediction logic and NLP-based analysis by leveraging experience in deep learning and multimodal AI systems. Skilled in model training, evaluation, and deployment using modern ML frameworks.",
+  skills: ["Python", "PyTorch", "TensorFlow", "Scikit-learn", "NLP", "SQL"],
+  avatar: "MK",
+  avatarBg: "#7C3AED",
+  avatarText: "#EDE9FE",
+  accentColor: "#1D4ED8",
+  accentBg: "#F5F3FF",
+  badgeColor: "bg-violet-100 text-violet-700",
+  github: "https://github.com/MShriK17",
+  linkedin: "https://www.linkedin.com/in/mahesh-k23/",
+  linkedinColor: "#0A66C2",
+  achievement: "Contributed to ML model development for role prediction and NLP analysis",
+  },
+  {
+    id: 3,
+  name: "Nishant Pravin Chaudhari",
+  role: "Database & Data Support",
+  department: "Engineering",
+  bio: "Supported data handling, preprocessing, and database management for TalentLens. Assisted in organizing datasets, performing data analysis, and ensuring smooth data flow for model training and application functionality.",
+  skills: ["Python", "MySQL", "Pandas", "Data Analysis", "Machine Learning Basics"],
+  avatar: "NC",
+  avatarBg: "#1D4ED8",
+  avatarText: "#EFF6FF",
+  accentColor: "#1D4ED8",
+  accentBg: "#EFF6FF",
+  badgeColor: "bg-blue-100 text-blue-700",
+  github: "https://github.com/Nishant-23-patil",
+  linkedin: "https://www.linkedin.com/in/nishant-chaudhari-4a8698273/",
+  linkedinColor: "#0A66C2",
+  achievement: "Handled dataset preparation and database support for analytics",
+  },
+];
+
+const TEAM_STATS = [
+  { value: "3", label: "Team Members", icon: "👥" },
+  { value: "450+", label: "Resumes Analysed", icon: "📄" },
+  { value: "5", label: "Scoring Dimensions", icon: "⚡" },
+  { value: "20+", label: "Role Profiles", icon: "🎯" },
+];
+
 /* ─── How TalentLens Works ─── */
 const HOW_IT_WORKS_MANUAL = [
   {
@@ -487,7 +553,7 @@ const ResumeBuilderGuidePage = () => {
   const navigate = useNavigate();
   const [activeSection, setActiveSection] = useState(0);
   const [activeTab, setActiveTab] = useState("guide");
-  const [scanMode, setScanMode] = useState("manual"); // "manual" | "advanced"
+  const [scanMode, setScanMode] = useState("manual");
   const [scrollY, setScrollY] = useState(0);
   const heroRef = useRef(null);
 
@@ -513,6 +579,7 @@ const ResumeBuilderGuidePage = () => {
     { id: "scoring",    label: "How Scoring Works",       icon: <Cpu className="w-4 h-4" /> },
     { id: "format",     label: "Format Rules",            icon: <Wrench className="w-4 h-4" /> },
     { id: "howitworks", label: "How TalentLens Works",    icon: <Zap className="w-4 h-4" /> },
+    { id: "team",       label: "Meet the Team",           icon: <Users className="w-4 h-4" /> },
   ];
 
   return (
@@ -1078,7 +1145,6 @@ const ResumeBuilderGuidePage = () => {
                   </p>
                 </div>
 
-                {/* What's different callout */}
                 <div className="grid sm:grid-cols-3 gap-3">
                   {[
                     { icon: "🚫", title: "No JD Required", desc: "AI detects the role from the resume itself" },
@@ -1095,7 +1161,6 @@ const ResumeBuilderGuidePage = () => {
                 </div>
 
                 <div className="relative">
-                  {/* Violet connector line */}
                   <div className="absolute left-7 top-10 bottom-10 w-0.5 hidden md:block"
                     style={{ background: `linear-gradient(to bottom, ${C.violet}, #6D28D9)` }} />
                   <div className="space-y-4">
@@ -1119,7 +1184,6 @@ const ResumeBuilderGuidePage = () => {
                   </div>
                 </div>
 
-                {/* Fit Score bands */}
                 <div>
                   <h3 className="text-lg font-bold text-gray-900 mb-4">AI Fit Score Bands</h3>
                   <p className="text-sm text-gray-500 mb-4">
@@ -1212,6 +1276,318 @@ const ResumeBuilderGuidePage = () => {
                   <Brain className="w-4 h-4 mr-2" />
                   Advanced Scan
                 </Button>
+              </div>
+            </div>
+
+          </div>
+        )}
+
+        {/* ═══════════════════════════════════════
+            TAB 5 — MEET THE TEAM
+        ═══════════════════════════════════════ */}
+        {activeTab === "team" && (
+          <div className="space-y-12 max-w-6xl">
+
+            {/* ── Team Hero Banner ── */}
+            <div
+              className="relative rounded-3xl overflow-hidden p-8 md:p-12"
+              style={{ background: `linear-gradient(135deg, ${C.forest} 0%, ${C.forestLt} 60%, #166534 100%)` }}
+            >
+              {/* Decorative circles */}
+              <div className="absolute -top-12 -right-12 w-56 h-56 rounded-full opacity-10" style={{ background: C.lime }} />
+              <div className="absolute -bottom-8 -left-8 w-40 h-40 rounded-full opacity-10" style={{ background: C.lime }} />
+              <div className="absolute top-6 right-1/3 w-2 h-2 rounded-full bg-white opacity-40" />
+              <div className="absolute bottom-8 right-1/4 w-3 h-3 rounded-full opacity-50" style={{ background: C.lime }} />
+
+              <div className="relative max-w-2xl">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold mb-5 border"
+                  style={{ background: "rgba(217,249,157,0.15)", borderColor: "rgba(217,249,157,0.3)", color: C.lime }}>
+                  <Users className="w-3.5 h-3.5" />
+                  The People Behind TalentLens
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
+                  Built with passion,<br />
+                  <span style={{ color: C.lime }}>shipped with purpose.</span>
+                </h2>
+                <p className="text-white/70 text-base leading-relaxed max-w-lg">
+                  We're a small, focused team of engineers, AI researchers, and designers who believe
+                  the hiring process deserves better tooling. TalentLens is what we built.
+                </p>
+              </div>
+
+              {/* Stats row inside hero */}
+              <div className="relative mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3">
+                {TEAM_STATS.map((stat) => (
+                  <div
+                    key={stat.label}
+                    className="rounded-2xl px-4 py-4 text-center"
+                    style={{ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.15)" }}
+                  >
+                    <p className="text-xl mb-1">{stat.icon}</p>
+                    <p className="text-2xl font-bold text-white leading-none mb-1">{stat.value}</p>
+                    <p className="text-xs font-medium" style={{ color: "rgba(255,255,255,0.6)" }}>{stat.label}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* ── Team Grid ── */}
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-1 h-6 rounded-full" style={{ background: C.forest }} />
+                <h3 className="text-xl font-bold text-gray-900">Core Team</h3>
+                <span className="text-xs font-semibold px-3 py-1 rounded-full bg-[#F0FDF4] text-[#1A4D2E] border border-[#D9F99D]">
+                  {TEAM_MEMBERS.length} Members
+                </span>
+              </div>
+
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                {TEAM_MEMBERS.map((member) => (
+                  <div
+                    key={member.id}
+                    className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+                  >
+                    {/* Card top accent stripe */}
+                    <div className="h-1.5 w-full" style={{ background: member.accentColor }} />
+
+                    <div className="p-6">
+                      {/* Avatar + Name + Role */}
+                      <div className="flex items-start gap-4 mb-4">
+                        <div
+                          className="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 text-lg font-bold shadow-sm"
+                          style={{ background: member.avatarBg, color: member.avatarText }}
+                        >
+                          {member.avatar}
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <h4 className="font-bold text-gray-900 text-base leading-tight">{member.name}</h4>
+                          <p className="text-sm font-semibold mt-0.5" style={{ color: member.accentColor }}>
+                            {member.role}
+                          </p>
+                          <span className={`inline-block mt-1.5 text-xs px-2.5 py-0.5 rounded-full font-semibold ${member.badgeColor}`}>
+                            {member.department}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Bio */}
+                      <p className="text-sm text-gray-600 leading-relaxed mb-4 line-clamp-3">
+                        {member.bio}
+                      </p>
+
+                      {/* Key Achievement */}
+                      <div
+                        className="flex items-start gap-2 rounded-xl px-3 py-2.5 mb-4"
+                        style={{ background: member.accentBg }}
+                      >
+                        <Award className="w-3.5 h-3.5 shrink-0 mt-0.5" style={{ color: member.accentColor }} />
+                        <p className="text-xs font-semibold leading-snug" style={{ color: member.accentColor }}>
+                          {member.achievement}
+                        </p>
+                      </div>
+
+                      {/* Skills */}
+                      <div className="flex flex-wrap gap-1.5 mb-5">
+                        {member.skills.map((skill) => (
+                          <span
+                            key={skill}
+                            className="text-xs px-2.5 py-1 rounded-lg font-medium bg-gray-50 text-gray-600 border border-gray-100"
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Social Links */}
+                      <div className="flex items-center gap-2 pt-4 border-t border-gray-50">
+                        <a
+                          href={member.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg border border-gray-200 text-gray-600 hover:border-gray-400 hover:text-gray-900 transition-all"
+                        >
+                          <Github className="w-3.5 h-3.5" />
+                          GitHub
+                        </a>
+                        <a
+                          href={member.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg text-white transition-all hover:opacity-90"
+                          style={{ background: member.accentColor }}
+                        >
+                          <Linkedin className="w-3.5 h-3.5" />
+                          LinkedIn
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* ── Our Values ── */}
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-1 h-6 rounded-full" style={{ background: C.violet }} />
+                <h3 className="text-xl font-bold text-gray-900">What We Believe In</h3>
+              </div>
+
+              <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+                {[
+                  {
+                    icon: "🎯",
+                    title: "Accuracy over hype",
+                    desc: "We spent weeks tuning the scoring engine to be genuinely accurate — not just impressive-looking. Every percentage point is calibrated.",
+                    color: "#1A4D2E", bg: "#F0FDF4",
+                  },
+                  {
+                    icon: "🔒",
+                    title: "Privacy by design",
+                    desc: "Your data never leaves your account scope. We built user isolation from day one, not as an afterthought.",
+                    color: "#1D4ED8", bg: "#EFF6FF",
+                  },
+                  {
+                    icon: "⚡",
+                    title: "Speed without compromise",
+                    desc: "Bulk scanning 50+ resumes should feel instant. We optimised every step of the pipeline so you're never staring at a loading bar.",
+                    color: "#D97706", bg: "#FFFBEB",
+                  },
+                  {
+                    icon: "🤖",
+                    title: "AI that explains itself",
+                    desc: "Every score comes with a breakdown. We believe AI tools should show their work — not just spit out a number and expect trust.",
+                    color: "#7C3AED", bg: "#F5F3FF",
+                  },
+                  {
+                    icon: "🧑‍💼",
+                    title: "Built for real recruiters",
+                    desc: "We interviewed hiring managers to understand what they actually need — not what product managers imagined they need.",
+                    color: "#0891B2", bg: "#F0F9FF",
+                  },
+                  {
+                    icon: "🌱",
+                    title: "Constantly improving",
+                    desc: "TalentLens ships updates every sprint. The role profiles, scoring weights, and NLP models are all continuously refined.",
+                    color: "#059669", bg: "#ECFDF5",
+                  },
+                ].map((val, i) => (
+                  <div
+                    key={i}
+                    className="rounded-2xl p-5 border hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+                    style={{ background: val.bg, borderColor: val.color + "25" }}
+                  >
+                    <span className="text-2xl block mb-3">{val.icon}</span>
+                    <h4 className="font-bold text-gray-900 text-sm mb-2">{val.title}</h4>
+                    <p className="text-xs text-gray-600 leading-relaxed">{val.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* ── Tech Stack ── */}
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-1 h-6 rounded-full" style={{ background: "#0891B2" }} />
+                <h3 className="text-xl font-bold text-gray-900">How We Built It</h3>
+              </div>
+
+              <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+                <div className="grid sm:grid-cols-2 md:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-gray-50">
+                  {[
+                    {
+                      layer: "Frontend",
+                      icon: <Globe className="w-5 h-5" />,
+                      color: "#1D4ED8",
+                      bg: "#EFF6FF",
+                      stack: ["React 18", "TypeScript", "Tailwind CSS", "Shadcn UI", "Recharts"],
+                    },
+                    {
+                      layer: "Backend",
+                      icon: <Terminal className="w-5 h-5" />,
+                      color: "#1A4D2E",
+                      bg: "#F0FDF4",
+                      stack: ["FastAPI", "Python 3.11", "spaCy NLP", "ReportLab", "PyMuPDF"],
+                    },
+                    {
+                      layer: "Database",
+                      icon: <Database className="w-5 h-5" />,
+                      color: "#D97706",
+                      bg: "#FFFBEB",
+                      stack: ["MongoDB Atlas", "MongoDB Compass"],
+                    },
+                    {
+                      layer: "Infrastructure",
+                      icon: <Cloud className="w-5 h-5" />,
+                      color: "#0891B2",
+                      bg: "#F0F9FF",
+                      stack: [ "Docker", "GitHub Actions"],
+                    },
+                  ].map((tier) => (
+                    <div key={tier.layer} className="p-5">
+                      <div className="flex items-center gap-2 mb-4">
+                        <div
+                          className="w-9 h-9 rounded-xl flex items-center justify-center text-white shrink-0"
+                          style={{ background: tier.color }}
+                        >
+                          {tier.icon}
+                        </div>
+                        <p className="font-bold text-sm text-gray-900">{tier.layer}</p>
+                      </div>
+                      <div className="space-y-2">
+                        {tier.stack.map((tech) => (
+                          <div
+                            key={tech}
+                            className="flex items-center gap-2 text-xs font-medium text-gray-700 px-2.5 py-1.5 rounded-lg"
+                            style={{ background: tier.bg }}
+                          >
+                            <span
+                              className="w-1.5 h-1.5 rounded-full shrink-0"
+                              style={{ background: tier.color }}
+                            />
+                            {tech}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* ── CTA ── */}
+            <div
+              className="rounded-3xl p-8 md:p-10 text-center relative overflow-hidden"
+              style={{ background: `linear-gradient(135deg, ${C.forest}, ${C.forestLt})` }}
+            >
+              <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full opacity-10" style={{ background: C.lime }} />
+              <div className="absolute -bottom-6 -left-6 w-28 h-28 rounded-full opacity-10" style={{ background: C.lime }} />
+              <div className="relative">
+                <p className="text-4xl mb-4">👋</p>
+                <h3 className="text-2xl font-bold text-white mb-3">Want to get in touch?</h3>
+                <p className="text-white/70 text-sm mb-7 max-w-md mx-auto leading-relaxed">
+                  We love hearing from recruiters, HR teams, and builders. Whether it's feedback,
+                  a feature request, or a collaboration idea — we're all ears.
+                </p>
+                <div className="flex flex-wrap justify-center gap-3">
+                  <Button
+                    className="bg-[#D9F99D] text-[#1A4D2E] hover:bg-[#A3E635] font-bold px-6"
+                    onClick={() => window.open(
+  "https://mail.google.com/mail/?view=cm&fs=1&to=talentlens.solutions@gmail.com&su=Inquiry&body=Hello TalentLens Team,"
+)}
+                  >
+                    <Mail className="w-4 h-4 mr-2" />
+                    Email the Team
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="border-white/30 text-white hover:bg-white/10 bg-transparent font-semibold px-6"
+                    onClick={() => navigate("/performance")}
+                  >
+                    <LayoutDashboard className="w-4 h-4 mr-2" />
+                    Back to Dashboard
+                  </Button>
+                </div>
               </div>
             </div>
 
