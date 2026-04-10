@@ -59,28 +59,27 @@ except OSError:
     download("en_core_web_sm")
     nlp = spacy.load("en_core_web_sm")
 
+# -----------------------------------------------------------------------------------------------------
 # Create the main app
-app = FastAPI(title="TalentLens AI API", version="1.0.0")
+app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=False,
-    allow_methods=["*"],
+    allow_origins=[
+        "https://talent-lens-psi.vercel.app",
+        "https://talent-lens-ub7s.onrender.com",
+        "http://localhost:3000",
+        "http://localhost:3002",
+        "http://127.0.0.1:3000",
+        "http://127.0.0.1:3002",
+    ],
+    allow_credentials=True,
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
     allow_headers=["*"],
+    expose_headers=["*"],
+    max_age=3600,
 )
-
-@app.options("/{rest_of_path:path}")
-async def preflight_handler(rest_of_path: str):
-    return JSONResponse(
-        content={"message": "OK"},
-        headers={
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "*",
-            "Access-Control-Allow-Headers": "*",
-        },
-    )
-
+#--------------------------------------------------------------------------------------------------------------
 
 api_router = APIRouter(prefix="/api")
 
@@ -3530,14 +3529,14 @@ async def get_advanced_dashboard(
 
 
 # Include the router in the main app
-app.include_router(api_router)
+# app.include_router(api_router)
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://localhost:3002", "http://127.0.0.1:3000", "http://127.0.0.1:3002"],
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=["http://localhost:3000", "http://localhost:3002", "http://127.0.0.1:3000", "http://127.0.0.1:3002"],
+#     allow_methods=["*"],
+#     allow_headers=["*"],
+# )
 
 
 @app.on_event("startup")
