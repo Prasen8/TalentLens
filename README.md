@@ -75,42 +75,7 @@
 
 ---
 
-## 📂 Project Structure
 
-```
-TalentLens/
-│
-├── backend/
-│   ├── main.py                # FastAPI app entry point
-│   ├── api/
-│   │   └── routes.py         # API endpoints
-│   ├── models/
-│   │   └── schemas.py        # Pydantic models
-│   ├── services/
-│   │   ├── nlp_utils.py      # NLP processing functions
-│   │   ├── scoring.py        # ATS scoring logic
-│   │   ├── role_detection.py # Role prediction logic
-│   │   ├── report.py         # PDF generation
-│   │   └── email_service.py  # Email automation
-│   ├── database/
-│   │   └── db.py             # MongoDB connection
-│   └── requirements.txt
-│
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── services/
-│   │   └── App.jsx
-│   ├── index.html
-│   └── package.json
-│
-├── .env
-├── README.md
-└── docker-compose.yml (optional)
-```
-
----
 
 ## 🔄 Workflow
 
