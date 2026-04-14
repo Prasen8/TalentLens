@@ -204,6 +204,8 @@ npm run dev
 
 ---
 
+## 🌏 Live Application : https://talent-lens-psi.vercel.app/
+
 ## 🔐 Environment Variables
 
 ```
